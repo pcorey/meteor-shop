@@ -1,16 +1,16 @@
-Template.loading.rendered = function () {
-  if ( ! Session.get('loadingSplash') ) {
+Template.loading.rendered = function() {
+  if (!Session.get("loadingSplash")) {
     this.loading = window.pleaseWait({
-      logo: '/images/logo-small.png',
-      backgroundColor: '#000',
+      logo: "/images/logo-small.png",
+      backgroundColor: "#000",
       loadingHtml: message + spinner
     });
-    Session.set('loadingSplash', true); // just show loading splash once
+    Session.set("loadingSplash", true); // just show loading splash once
   }
 };
 
-Template.loading.destroyed = function () {
-  if ( this.loading ) {
+Template.loading.destroyed = function() {
+  if (this.loading) {
     this.loading.finish();
   }
 };

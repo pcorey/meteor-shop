@@ -1,38 +1,38 @@
 Template.cartShow.helpers({
-  cart : function(){
+  cart: function() {
     currentCart = Carts.getCart(userKey);
     return currentCart;
   },
-  thereAreNo : function(items){
+  thereAreNo: function(items) {
     return items.length == 0;
   }
 });
 
 Template.cartShow.events({
-  "click .remove-from-cart" : function(ev){
+  "click .remove-from-cart": function(ev) {
     ev.preventDefault();
-    removeFromCart(this.sku, function(err,res){
-      if(err){
+    removeFromCart(this.sku, function(err, res) {
+      if (err) {
         console.log(err);
-      }else{
+      } else {
         //any items left?
-        if(currentCart.items.length === 0){
+        if (currentCart.items.length === 0) {
           Router.go("homeIndex");
         }
       }
     });
   },
-  "change .item-qty" : function(ev){
+  "change .item-qty": function(ev) {
     var rawValue = $(ev.currentTarget).val();
 
-    if(!isNaN(rawValue)){
+    if (!isNaN(rawValue)) {
       var newQty = parseInt(rawValue);
       var name = this.name;
-      if(newQty === 0){
+      if (newQty === 0) {
         removeFromCart(this.sku);
-      }else {
+      } else {
         this.quantity = parseInt(newQty);
-        updateCart(this.sku,this.quantity, function (err, res) {
+        updateCart(this.sku, this.quantity, function(err, res) {
           if (err) {
             //console.log(err);
             sAlert.error(err);
@@ -44,7 +44,7 @@ Template.cartShow.events({
       }
       //just to be sure
       $(ev.currentTarget).val(newQty);
-    }else{
+    } else {
       sAlert.error("That's not a number...");
     }
   }

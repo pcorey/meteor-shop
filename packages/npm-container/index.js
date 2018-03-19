@@ -4,6 +4,8 @@ Meteor.npmRequire = function(moduleName) {
 };
 
 Meteor.require = function(moduleName) {
-  console.warn('Meteor.require is deprecated. Please use Meteor.npmRequire instead!');
+  console.warn(
+    "Meteor.require is deprecated. Please use Meteor.npmRequire instead!"
+  );
   return Meteor.npmRequire(moduleName);
 };

@@ -1,5 +1,5 @@
 Template.nav.helpers({
-  vendors : function(){
+  vendors: function() {
     return Vendors.find();
   }
 });

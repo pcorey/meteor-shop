@@ -1,10 +1,10 @@
 Template.productTile.events({
-  "click .add-to-cart" : function(ev){
+  "click .add-to-cart": function(ev) {
     ev.preventDefault();
-    addToCart(this.sku, function(err,res){
-      if(err){
+    addToCart(this.sku, function(err, res) {
+      if (err) {
         console.log(err);
-      }else{
+      } else {
         Router.go("cartShow");
       }
     });
